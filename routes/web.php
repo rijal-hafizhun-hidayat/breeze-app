@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
 
     //Akuns
     Route::get('/akuns', [AkunController::class, 'index'])->name('akuns');
+    Route::post('/akuns', [AkunController::class, 'store'])->name('akuns.store');
+    Route::get('/akuns/create', [AkunController::class, 'create'])->name('akuns.create');
 });
 
 require __DIR__ . '/auth.php';

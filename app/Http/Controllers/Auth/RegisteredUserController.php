@@ -31,11 +31,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //return dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required',
-            'email' => 'required|string|email|max:255|unique:' . User::class,
-            'password' => ['required', 'confirmed'],
+            // 'email' => 'required|string|email|max:255|unique:' . User::class,
+            'email' => 'required|string|email|max:255',
+            'password' => 'required',
         ]);
 
         $user = User::create([
@@ -47,8 +49,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        //Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::AKUNS);
     }
 }

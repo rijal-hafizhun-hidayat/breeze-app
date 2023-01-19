@@ -11,4 +11,8 @@ class AkunController extends Controller
     {
         return Inertia::render('Akun/Akun');
     }
+
+    public function create(){
+        return Inertia::render('Akun/Create');
+    }
 }
